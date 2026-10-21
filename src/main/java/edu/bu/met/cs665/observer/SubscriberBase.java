@@ -6,7 +6,9 @@
  * Description: This interface is used for all subscribers in the delivery system.
  */
 
-package edu.bu.met.cs665;
+package edu.bu.met.cs665.observer;
+
+import edu.bu.met.cs665.DeliveryRequest;
 
 /**
  * Interface that defines the method that allow subscribers to receive notifications

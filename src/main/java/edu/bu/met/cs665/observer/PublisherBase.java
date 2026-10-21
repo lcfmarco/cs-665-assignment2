@@ -6,7 +6,7 @@
  * Description: This interface is used for all publishers in the delivery system.
  */
 
-package edu.bu.met.cs665;
+package edu.bu.met.cs665.observer;
 
 /**
  * Interface that defines the behavior for publishers to manage

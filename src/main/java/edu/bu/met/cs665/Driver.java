@@ -8,6 +8,8 @@
 
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.observer.SubscriberBase;
+
 /**
  * Driver class that uses the SubscriberBase interface as
  * the drivers are subscribing to shops (the publishers).

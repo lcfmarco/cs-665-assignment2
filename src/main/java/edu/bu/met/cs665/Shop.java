@@ -9,6 +9,9 @@
 
 package edu.bu.met.cs665;
 
+import edu.bu.met.cs665.observer.PublisherBase;
+import edu.bu.met.cs665.observer.SubscriberBase;
+
 import java.util.ArrayList;
 
 /**
