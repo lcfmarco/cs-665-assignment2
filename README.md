@@ -12,7 +12,7 @@ The objective of the assignment is to develop a notification system that inform 
 requests made by shops. A shop can create a delivery request, and sent this request to all available drivers.
 
 # GitHub Repository Link:
-https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
+https://github.com/lcfmarco/cs-665-assignment2
 
 # Implementation Description 
 
