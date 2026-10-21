@@ -1,7 +1,7 @@
 /**
- * Name: FIRST_NAME LAST_NAME
+ * Name: Chin Fung Lam Marco
  * Course: CS-665 Software Designs & Patterns
- * Date: MM/DD/YYYY
+ * Date: 10/20/2026
  * File Name: Main.java
  * Description: Demonstrates basic Log4j logging.
  */

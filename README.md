@@ -1,13 +1,15 @@
 
 | CS-665       | Software Design & Patterns |
 |--------------|----------------------------|
-| Name         | FIRST_NAME LAST_NAME       |
-| Date         | MM/DD/YYYY                 |
-| Course       | Fall / Spring / Summer     |
-| Assignment # |                            |
+| Name         | Chin Fung Lam Marco        |
+| Date         | 10/20/2026                 |
+| Course       | Fall                       |
+| Assignment # | 2                          |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+Given a collection of retailers in a busy city with collaboration with local drivers.
+The objective of the assignment is to develop a notification system that inform drivers about delivery
+requests made by shops. A shop can create a delivery request, and sent this request to all available drivers.
 
 # GitHub Repository Link:
 https://github.com/{YOUR_USERNAME}/cs-665-assignment-{ASSIGNMENT_NUMBER}
@@ -19,12 +21,74 @@ For each assignment, please answer the following:
 
 - Explain the level of flexibility in your implementation, including how new object types can
 be easily added or removed in the future.
+
+The implementation is designed to be flexible by separating the responsibilities of shops and drivers through the Observer
+design pattern. With this pattern, the Shop class implements the PublisherBase interface, and the Driver
+class implements the SubscriberBase interface. What this does is the shops can notify subscribers (the drivers)
+without needing to directly utilise the methods in the Driver class. 
+
+Additionally, with how the subscribers and publishers are set up, it is easy to add or remove Drivers from a shop's subscribers
+list using the subscribe() and unsubscribe() method (required by the interface), without needing to change any of the existing
+implementation in our code. 
+
+Next, if we ever have new types of subscribers, these new subscribers can be created by implementing the
+SubscriberBase interface without needing to make any modifications to the Shop class, thus added flexibility.
+
+A driver can also quite easily subscribe to multiple shops to receive delivery requests from various publishers
+without needing to implement new, and specific code each time. This adds to the flexibility of my implementation.
+
 - Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
+
+As mentioned earlier, the project is implemented with the intention of being simple. I try to make it easier
+to understand by clearly separating the responsibilities of the different classes. This makes it easier to understand
+because each class holds different purposes. The Shop class is responsible for creating and broadcasting the 
+delivery requests, the Driver class is responsible for receiving the notifications from the Shops, and the 
+DeliveryRequest class ensures that the delivery information is stored properly, and finally the interfaces provides the
+rules that are needed for the Subscribers and Publishers to make it clear on what is needed for each role.
+
+On top of that, the methods and variable names uses descriptive names to make it clear on what the variables represent
+or what the methods are doing, plus I added comments to explain what each class does, and what each method 
+does, with additional details of any parameters it takes and the things it should be returning.
+
 - Describe how you have avoided duplicated code and why it is important.
+
+Duplicated code is avoided through the Observer design pattern as well, more specifically 
+it removes a lot of the duplication in the notification process between shops and drivers. 
+
+Rather than needing to write methods or writing specific code to notify individual drivers, 
+we just needed a single notifySubscribers() method in the Shop class to notify a new delivery request
+to all the subscribed drivers. 
+
+Additionally, I try to reuse existing methods whenever possible. For example, in the implementation of 
+createDeliveryRequest(), the method calls setLatestDeliveryRequest() to handle the storing of the new request and
+the notifying subscribers of new changes. I reuse this method to avoid needing to reimplement
+something I have already previously implemented, which avoids duplicate code.
+
+Avoiding duplicate code is important for many reasons. First, it makes the implementation easier to understand
+as there is less clutter. But most importantly, it reduces the chances of inconsistencies due to needing to implement
+the same thing multiple times, and it makes it much easier to manage the code when changes needs to be made. Rather than making
+changes to multiple locations, chances are we would only need to make changes to one location.
+
 - If applicable, mention any design patterns you have used and explain why they were
 chosen.
 
+As explained earlier, I applied the Observer pattern. The reason this pattern is used is demonstrated in the previous
+questions, but in short it is because the problem involves the situation where we have a subscriber, and we have a publisher, 
+such that the subscriber are the drivers and the publishers are the shops. Considering that multiple
+drivers can subscribe to a store, there is a lot more simplicity when
+a store decides to broadcast a delivery request. Using this pattern prevents the need from 
+individually informing every driver involved, rather a single method to notify 
+all subscribers does that task. 
+
+# Assumptions Made
+
+1. I assumed that a Driver can be subscribed to multiple stores, rather than only one store.
+2. I assumed that an existing request can be updated after being made. And when an update is made, the new changes should be notified to the subscribers.
+3. I assumed that when a delivery request is made, the shop associated to that delivery request cannot be changed. Thus I made the Shop field in the DeliveryRequest class FINAL.
+4. I assumed that all subscribed drivers are considered available, and that there is no limit to how many requests they can receive.
+5. I assumed a shop and Driver only needs to keep track of their latest deliveries. Such that a shop only keeps track of the latest delivery they sent out, and the driver only needs to keep track of the latest delivery request they received.
+While I recognize that keeping track of all delivery requests is more useful in real life, for simplicity of the code I assumed that as it wasn't a requirement.
 
 # Maven Commands
 
